@@ -19,9 +19,9 @@ def parse_json():
     
 
 
-    with open('reddit_top_posts.csv', 'a') as csvfile:
+    with open('csv/reddit_top_posts.csv', 'a') as csvfile:
         rowcount  = 0
-        for row in open('reddit_top_posts.csv'):
+        for row in open('csv/reddit_top_posts.csv'):
             rowcount+= 1
         writer = csv.DictWriter(csvfile, fieldnames = field_names, lineterminator='\n')
         if rowcount < 1:
