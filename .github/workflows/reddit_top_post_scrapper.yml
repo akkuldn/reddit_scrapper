@@ -19,5 +19,5 @@ jobs:
           pip install virtualenv
           virtualenv venv 
           source venv/bin/activate
-          pip install requirements.txt
+          pip install -r requirements.txt
           scrapy crawl post -s CLOSESPIDER_ITEMCOUNT=1000 -o posts.json
