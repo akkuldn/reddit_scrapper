@@ -23,6 +23,7 @@ jobs:
           cd reddit/spiders
           scrapy crawl post -s CLOSESPIDER_ITEMCOUNT=1000 -o posts.json
           python json_parser.py
+          pwd
       - name: Connect s3 bucket
         uses: jakejarvis/s3-sync-action@master
         env:
