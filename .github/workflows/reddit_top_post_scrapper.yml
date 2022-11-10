@@ -1,0 +1,22 @@
+name: Reddit scrapper
+on:
+  schedule:
+    - cron: "0 0 * * *"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repo content
+        uses: actions/checkout@v2 # checkout the repository content to github runner.
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8 #install the python needed
+      - name: execute py script # run the run.py to get the latest data
+        run: |
+          pip install virtualenv
+          virtualenv venv 
+          source venv/bin/activate
+          pip install requirements.txt
+          scrapy crawl post -s CLOSESPIDER_ITEMCOUNT=1000 -o posts.json
