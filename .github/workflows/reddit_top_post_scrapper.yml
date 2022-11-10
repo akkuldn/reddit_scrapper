@@ -22,3 +22,12 @@ jobs:
           pip install -r requirements.txt
           cd reddit/spiders
           scrapy crawl post -s CLOSESPIDER_ITEMCOUNT=1000 -o posts.json
+          python json_parser.py
+      - name: Connect s3 bucket
+        uses: jakejarvis/s3-sync-action@master
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: 'ap-south-1'   # optional: defaults to us-east-1
+          SOURCE_DIR: '/home/runner/work/reddit_scrapper/reddit/spiders/reddit_top_posts.csv'
