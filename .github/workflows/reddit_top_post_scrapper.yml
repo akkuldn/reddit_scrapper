@@ -32,7 +32,7 @@ jobs:
           cd reddit/spiders
           scrapy crawl post -s CLOSESPIDER_ITEMCOUNT=1000 -o posts.json
           ls csv/
-          python json_parser.py
+          sudo python json_parser.py
           cd csv
           ls
           pwd
