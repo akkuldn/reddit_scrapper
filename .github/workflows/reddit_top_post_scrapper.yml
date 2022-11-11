@@ -32,11 +32,12 @@ jobs:
           cd reddit/spiders
           scrapy crawl post -s CLOSESPIDER_ITEMCOUNT=1000 -o posts.json
           sudo chmod -R 777 csv
+          sudo apt install csvkit
           python json_parser.py
           cd csv
           ls
           pwd
-          cat *csv > reddit_top_posts.csv
+          csvstack reddit_downloaded.csv reddit_top_posts.csv > reddit_top_posts.csv
           rm reddit_downloaded.csv
 
 
