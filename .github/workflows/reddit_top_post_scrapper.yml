@@ -15,8 +15,8 @@ jobs:
         with:
           python-version: 3.8 #install the python needed
       - name: s3 download
-      - uses: keithweaver/aws-s3-github-action@v1.0.0
-          with:
+        uses: keithweaver/aws-s3-github-action@v1.0.0
+        with:
           command: cp
           source: s3://reddit-scraper-top-posts-raghava-akkul/reddit_top_posts.csv
           destination: '/home/runner/work/reddit_scrapper/reddit_scrapper/reddit/spiders'
