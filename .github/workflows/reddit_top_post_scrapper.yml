@@ -19,7 +19,7 @@ jobs:
         with:
           command: cp
           source: s3://reddit-scraper-top-posts-raghava-akkul/reddit_top_posts.csv
-          destination: '/home/runner/work/reddit_scrapper/reddit_scrapper/reddit/spiders'
+          destination: '/home/runner/work/reddit_scrapper/reddit_scrapper/reddit/spiders/reddit_downloaded.csv'
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: ap-south-1
