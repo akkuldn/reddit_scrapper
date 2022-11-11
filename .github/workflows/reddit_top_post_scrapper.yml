@@ -19,7 +19,7 @@ jobs:
         with:
           command: cp
           source: s3://reddit-scraper-top-posts-raghava-akkul/reddit_top_posts.csv
-          destination: '/home/runner/work/reddit_scrapper/reddit_scrapper/reddit/spiders/reddit_downloaded.csv'
+          destination: '/home/runner/work/reddit_scrapper/reddit_scrapper/reddit/spiders/csv/reddit_downloaded.csv'
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: ap-south-1
@@ -33,8 +33,11 @@ jobs:
           scrapy crawl post -s CLOSESPIDER_ITEMCOUNT=1000 -o posts.json
           mkdir csv
           python json_parser.py
+          cd csv
           ls
           pwd
+          cat *csv > reddit_top_posts.csv
+
 
       - name: Connect s3 bucket
         uses: jakejarvis/s3-sync-action@master
